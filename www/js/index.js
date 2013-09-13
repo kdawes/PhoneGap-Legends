@@ -500,6 +500,7 @@ function isPhoneGap() {
 }
 
 function initAudio() {
+//DEVICE stuff is moved to a plugin
     if ( isPhoneGap() ) {
         if (device.platform == "Android") {
             monsterRoar = new Media("/android_asset/www/assets/sounds/167890__erdie__monster.wav");
@@ -517,11 +518,11 @@ function initAudio() {
 function init(event) {
 	alert('device is ready!');
     var txt = 'Device Name: '     + device.name     + '<br />' +
-                            'Device Cordova: '  + device.cordova  + '<br />' +
-                            'Device Platform: ' + device.platform + '<br />' +
-                            'Device UUID: '     + device.uuid     + '<br />' +
-                            'Device Model: '    + device.model    + '<br />' +
-                            'Device Version: '  + device.version  + '<br />';
+            'Device Cordova: '  + device.cordova  + '<br />' +
+            'Device Platform: ' + device.platform + '<br />' +
+            'Device UUID: '     + device.uuid     + '<br />' +
+            'Device Model: '    + device.model    + '<br />' +
+            'Device Version: '  + device.version  + '<br />';
 	alert('ISPHONEGAP' + txt);
 
     initAudio();
@@ -571,12 +572,12 @@ window.addEventListener( "resize", function() {
   
 
   
-if ( isPhoneGap() ) {
-	alert('detected cordova');
+//if ( isPhoneGap() ) {
+//	alert('detected cordova');
     document.addEventListener( "deviceready", init, false );
-}
-else {
-	alert('not phone gap');
+//}
+//else {
+//	alert('not phone gap');
     window.addEventListener( "load", init );
-}
+//}
 
