@@ -194,10 +194,6 @@ function getTile(x,y) {
 }
 
 function render(){
-    console.log("render")
-
-
-
     translate.x += Math.sin( input.angle ) * Math.floor(input.distance);
     translate.y += Math.cos( input.angle ) * Math.floor(input.distance);
 
@@ -268,7 +264,8 @@ function render(){
     if ( compass.visible ){
         //console.log( (input.start.x-(compass.w/2)), (input.start.y-(compass.h/2)))
         var style = "translate3d("+ (input.start.x-(compass.w/2)) +'px,'+ (input.start.y-(compass.h/2)) +"px,0px)";
-        //console.log(style);
+        console.log(style);
+		//alert('style ' + style);
         compass.el.style["-webkit-transform"]= style;
 
         style = "translate3d("+ (input.current.x-(touch.w/2)) +'px,'+ (input.current.y-(touch.h/2)) +"px,0px)";
@@ -494,6 +491,7 @@ Number.prototype.mod = function(n) {
 
 //detect if web or phonegap ( via http://stackoverflow.com/questions/8068052/phonegap-detect-if-running-on-desktop-browser)
 function isPhoneGap() {
+	
 	return false;
     return ((cordova || PhoneGap || phonegap)
         && /^file:\/{3}[^\/]/i.test(window.location.href)
@@ -502,7 +500,6 @@ function isPhoneGap() {
 }
 
 function initAudio() {
-	alert('device ' + device.platform);
     if ( isPhoneGap() ) {
         if (device.platform == "Android") {
             monsterRoar = new Media("/android_asset/www/assets/sounds/167890__erdie__monster.wav");
@@ -518,6 +515,14 @@ function initAudio() {
 }
 
 function init(event) {
+	alert('device is ready!');
+    var txt = 'Device Name: '     + device.name     + '<br />' +
+                            'Device Cordova: '  + device.cordova  + '<br />' +
+                            'Device Platform: ' + device.platform + '<br />' +
+                            'Device UUID: '     + device.uuid     + '<br />' +
+                            'Device Model: '    + device.model    + '<br />' +
+                            'Device Version: '  + device.version  + '<br />';
+	alert('ISPHONEGAP' + txt);
 
     initAudio();
 
@@ -563,11 +568,15 @@ window.addEventListener( "resize", function() {
 });
 
 
+  
 
+  
 if ( isPhoneGap() ) {
-    document.addEventListener( "deviceready", init );
+	alert('detected cordova');
+    document.addEventListener( "deviceready", init, false );
 }
 else {
+	alert('not phone gap');
     window.addEventListener( "load", init );
 }
 
