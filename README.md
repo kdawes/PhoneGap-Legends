@@ -1,5 +1,9 @@
 # PhoneGap Legends
 
+
+*Updated to cordova 3.0 style project* - $ git clone [github stuff...]/Phonegap-legends.git && cd Phonegap-Legends && cordova -d platform add ios &&
+cordova -d plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git && cordova -d build ios && cordova -d emulate ios
+
 *"PhoneGap Legends"* is a proof of concept app demonstrating a fantasy/RPG gaming scenario. This is not intended to be a fully/complete app or game engine, just a showcase of what PhoneGap apps are capable of.   The app demonstrates a game scenario that leverages best practices for HTML DOM elements to achieve an optimal user experience.  You can read full detail about the techniques used to develop this sample app at: http://www.tricedesigns.com/?p=2928
 
 You can view a preview of this sample app live on devices at http://youtu.be/Pxzk6E6iWMA
